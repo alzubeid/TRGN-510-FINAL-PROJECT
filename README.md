@@ -34,4 +34,6 @@ https://portal.gdc.cancer.gov
 
 I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc/vignettes/DESeq2.html)
 
-
+# Milestone #1:
+-differential expression of small selected sample
+-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer 
