@@ -38,3 +38,7 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 -Due to the large clinical dataset involving the two subsets of patients, a smaller subset was chosen to run a test relative to the vignette.  
 -Differential expression analysis was run on the small selected sample
 	-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer (the 2 attached file are TNB_HR_Joined_Counts test.csv, and metadata test.csv).  
+
+# Known Issues:
+-small sample is used to run the test for differential expression.  
+-the data obtained from TCGA cases were cross examined with portal.gdc.cancer.gov dataset.  
