@@ -35,5 +35,6 @@ https://portal.gdc.cancer.gov
 I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc/vignettes/DESeq2.html)
 
 # Milestone #1:
--differential expression of small selected sample
--a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer 
+-Due to the large clinical dataset involving the two subsets of patients, a smaller subset was chosen to run a test relative to the vignette.  
+-Differential expression analysis was run on the small selected sample
+	-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer (the 2 attached file are TNB_HR_Joined_Counts test.csv, and metadata test.csv).  
