@@ -45,7 +45,7 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 	showing 1,304 genes  with stastically significant difference.  
 	-PCA plot show that the TN breast cancers express distinct genes from hormone-receptor-positive tumors.  
 	
-	![image](https://user-images.githubusercontent.com/112045479/204718692-d9b449ff-797d-4352-b154-5b9fd21ae8f0.png)
+	
 
 
 # Known Issues:
