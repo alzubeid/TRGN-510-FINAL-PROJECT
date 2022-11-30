@@ -39,6 +39,15 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 -Differential expression analysis was run on the small selected sample
 	-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer (the 2 attached file are TNB_HR_Joined_Counts test.csv, and metadata test.csv).  
 
+# Milestone #2:
+-Differential expression analysis was run on the small selected sample
+	-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer: 
+	showing 1,304 genes  with stastically significant difference.  
+	-PCA plot show that the TN breast cancers express distinct genes from hormone-receptor-positive tumors.  
+	
+	![image](https://user-images.githubusercontent.com/112045479/204718692-d9b449ff-797d-4352-b154-5b9fd21ae8f0.png)
+
+
 # Known Issues:
 -small sample is used to run the test for differential expression.  
 -the data obtained from TCGA cases were cross examined with portal.gdc.cancer.gov dataset.  
