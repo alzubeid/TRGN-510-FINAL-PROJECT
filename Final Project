@@ -1,0 +1,120 @@
+
+Title: Triple Negative vs. Estrogen-Positive Breast Cancer
+Author: Batul Al-zubeidy
+
+#Data input and construct a DESeqDataSet
+#Installation of libraries (requires BiocManager, quietly = TRUE)
+# install.packages("BiocManager")
+# install.packages("apeglm")
+# BiocManager::install("clusterProfiler")
+# BiocManager::install("BiocParallel")
+# BiocManager::install("ComplexHeatmap")
+# BiocManager::install("IHW")
+
+library(DESeq2)
+library(ggplot2)
+library(ComplexHeatmap)
+
+
+TNB_HR_Joined <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/TNB_HR_Joined_Counts.csv", header = TRUE, row.names = 1)
+
+# Call the count data that was joined using Bash comparing TNB and HR-positive. 
+# This data is attached as "Joined_counts"
+counts <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/TNB_HR_Joined_Counts.csv", header = TRUE, row.names = 1, sep = ",")
+
+counts <- counts[which(rowSums(counts) >1),]
+
+condition <- factor(c("TNB_Sample1", "TNB_Sample2", "TNB_Sample3", "TNB_Sample4", "TNB_Sample5", "TNB_Sample6", "TNB_Sample7", "TNB_Sample8", 
+"TNB_Sample9", "TNB_Sample10", "HR_Sample1", "HR_Sample2", "HR_Sample3", "HR_Sample4", "HR_Sample5", "HR_Sample6", "HR_Sample7", "HR_Sample8", 
+"HR_Sample9", "HR_Sample10"))
+
+#creating data frame
+#this dataframe is included as "coldata" in the folder
+coldata <- data.frame(row.names = colnames(counts), condition)
+
+# Gene differential expression analysis
+dds <- DESeqDataSetFromMatrix(countData = round(counts), colData = metadata, design = ~condition)
+dds <- DESeq(dds)
+
+vsdata <- vst(dds, blind = FALSE)
+
+#Developing PCA plot to identify differentially expressed genes:
+plotPCA(vsdata, intgroup = "condition")
+
+plotDispEsts(dds)
+
+# Generating log2 fold change (MLE) between the TNB and HR
+res <- results(dds, contrast = c("condition", "TNB", "HR"))
+
+res <- results(dds, name="condition_treated_vs_untreated")
+res <- results(dds, contrast=c("condition","treated","untreated"))
+
+# remove all the genes with NA
+sigs <- na.omit(res)
+
+# will choose to isolate the only genes that meet a significant difference
+sigs <- sigs[sigs$padj < 0.05, ]
+
+# the genes that have significant difference btween TNB and HR. 
+sigs
+
+write.csv(sigs, file = "deseq_results.csv")
+
+#differential expression in a dataframe
+sigs.df
+
+df <- as.data.frame(sigs)
+
+#convert Ensemble to symbol in R
+
+
+sigs.df <- as.data.frame(sigs)
+
+#Narrrowing our results to sigs base mean >100, and log2 Fold change >1.5
+sigs.df <- sigs.df[(sigs.df$baseMean > 100) & (abs(sigs.df$log2FoldChange) > 1.5), ]
+
+mat <- counts(dds, normalized = T)[rownames(sigs.df),]
+
+#Ensemble name
+V1 <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/V1.csv", sep = ",")
+
+#Symbol name
+V2 <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/V2.csv", sep = ",")
+
+#joining the two tables of V1 (ensemble) and V2(symbol) gene names 
+library(dplyr)
+Joined <- cbind(V1, V2)
+
+#Joining the Ensemble Name and Symbol Name:
+keys <- Joined$V1
+values <- Joined$V2
+l <- list()
+for (i in 1: length(keys)){
+  l[keys[i]] <- values[i]
+}
+
+#To remove any non-mapped labels:
+no_values <- setdiff(rownames(df), keys)
+for (i in 1: length(no_values)){
+  l[no_values[i]] <- 'NA'
+}
+
+mat.z <- t(apply(mat, 1, scale))
+colnames(mat.z) <- rownames(coldata)
+##Testing code below
+testing <- mat.z
+testing <- as.data.frame(testing)
+testing$ensembl <- row.names(testing)
+library(dplyr)
+joined <- rename (Joined, 'ensembl' = 'V1')
+testing2 <- full_join(joined, testing, by = "ensembl")
+testing2 <- testing2[-c(1)]
+row.names(testing2) <- testing2$V2
+testing2 <- testing2[-c(1)]
+testing2 <- as.matrix(testing2)
+
+#Creating the heatmap:
+Heatmap(mat.z, cluster_rows = T, cluster_columns = T, column_labels = colnames(mat.z), name = "Z-score")
+
+Heatmap(testing2, cluster_rows = T, cluster_columns = T, column_labels = colnames(testing2), name = "Z-score")
+
