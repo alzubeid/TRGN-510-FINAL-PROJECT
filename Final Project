@@ -10,16 +10,45 @@ Author: Batul Al-zubeidy
 # BiocManager::install("BiocParallel")
 # BiocManager::install("ComplexHeatmap")
 # BiocManager::install("IHW")
+# BiocManager::install("vsn")
 
 library(DESeq2)
 library(ggplot2)
 library(ComplexHeatmap)
+library(dplyr)
 
+#Load data:
+setwd("/users/al-zubeidy/Fall2022courses/TRGNFinal/Final")
+TNB_sample01 <- read.csv('65ba302c-51a9-4493-8d28-e7bc076bca54.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample02 <- read.csv('4ba90a73-b2e0-415b-9cd2-fad805840aff.rna_seq.augmented_star_gene_counts.tsv, header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample03 <- read.csv('star_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample04 <- read.csv('79beb4e0-5066-481f-b432-94d69219bfe8.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample05 <- read.csv('c8c213fe-4ab7-4671-81cb-fe09b11fcbe7.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample06 <- read.csv('a0707dab-b8bd-4a57-a890-69a3f4daacf6.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample07 <- read.csv('341e11ea-c1b6-4d66-999c-76ebb9c8b342.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample08 <- read.csv('3cd924c3-5000-49de-a253-92d1cfa9a09a.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample09 <- read.csv('465928c5-ab56-46ff-acb5-76e36c97ebda.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample10 <- read.csv('c6683fc6-49f4-4e53-94ac-251799c2c638.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+TNB_sample06 <- read.csv('a0707dab-b8bd-4a57-a890-69a3f4daacf6.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample01  <- read.csv('d9a1fa44-0877-423f-9beb-55f3fc936f7b.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample02  <- read.csv('616b6b60-8c4a-4d85-9a24-f47df6ad497e.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample03  <- read.csv('a740aa2d-a410-443f-99f4-3a123deb2f41.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample04  <- read.csv('abb411d3-1474-4e6e-afa9-23b974d9a557.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample05 <- read.csv('23dace7d-4200-46ee-8501-96c4b5084851.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample06 <- read.csv('31bdedf8-eb1c-48ae-8d96-e06c2b3f27d2.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample07 <- read.csv('5d96c14c-7c43-40a1-ba9a-b482a0ad00ee.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample08 <- read.csv('d3f91fef1-b62c-4884-a882-c99bb6ca9613.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample09 <- read.csv('4c6f18b9-eb4c-4b7f-90ee-0c3194407be7.rna_seq.augmented_star_gene_counts', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+HR-sample10 <- read.csv('d7faebca5-c36a-4a24-b785-5e673cf5a0ed.rna_seq.augmented_star_gene_counts.tsv', header = FALSE, sep = ",", quote = "\", fill = TRUE, row = 1)
+
+#Join the dataset into "TNB_HR_Joined"
+TNB_HR_Joined <- bind_cols(TNB_le01,TNB_sample02,TNB_sample03,TNB_sample04,TNB_sample05,TNB_sample06,TNB_sample07,TNB_sample08,TNB_sample09,TNB_sample10,HR_sample01,HR_sample02,HR_sample03,HR_sample04,HR_sample05,HR_sample06,HR_sample07,HR_sample08,HR_sample09,HR_sample10)
+rownames(TNB_HR_Joined) <-rownames(sample)
 
 TNB_HR_Joined <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/TNB_HR_Joined_Counts.csv", header = TRUE, row.names = 1)
 
-# Call the count data that was joined using Bash comparing TNB and HR-positive. 
-# This data is attached as "Joined_counts"
+# Call the count data that was joined 
+# This data is attached as "TNB_HR_Joined"
 counts <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/TNB_HR_Joined_Counts.csv", header = TRUE, row.names = 1, sep = ",")
 
 counts <- counts[which(rowSums(counts) >1),]
@@ -36,11 +65,15 @@ coldata <- data.frame(row.names = colnames(counts), condition)
 dds <- DESeqDataSetFromMatrix(countData = round(counts), colData = metadata, design = ~condition)
 dds <- DESeq(dds)
 
+# Extracting transformed values
 vsdata <- vst(dds, blind = FALSE)
+rld <- rlog(dds, blind=FALSE)
+head(assay(vsd), 3)
 
-#Developing PCA plot to identify differentially expressed genes:
+# Developing PCA plot to identify differentially expressed genes:
 plotPCA(vsdata, intgroup = "condition")
 
+# Mean of normalized count vs. dispersion
 plotDispEsts(dds)
 
 # Generating log2 fold change (MLE) between the TNB and HR
@@ -49,8 +82,17 @@ res <- results(dds, contrast = c("condition", "TNB", "HR"))
 res <- results(dds, name="condition_treated_vs_untreated")
 res <- results(dds, contrast=c("condition","treated","untreated"))
 
-# remove all the genes with NA
+#P-value adjustment
+#obtain a summary of significance
+summary(sigs.df)
+
+# Remove all the genes with NA
 sigs <- na.omit(res)
+
+# Independent hypothesis weighting:
+library("IHW")
+res <- results(dds, filterFun=ihw)
+summary(resIHW)
 
 # will choose to isolate the only genes that meet a significant difference
 sigs <- sigs[sigs$padj < 0.05, ]
@@ -64,9 +106,6 @@ write.csv(sigs, file = "deseq_results.csv")
 sigs.df
 
 df <- as.data.frame(sigs)
-
-#convert Ensemble to symbol in R
-
 
 sigs.df <- as.data.frame(sigs)
 
@@ -113,7 +152,7 @@ row.names(testing2) <- testing2$V2
 testing2 <- testing2[-c(1)]
 testing2 <- as.matrix(testing2)
 
-#Creating the heatmap:
+# Creating the heatmap:
 Heatmap(mat.z, cluster_rows = T, cluster_columns = T, column_labels = colnames(mat.z), name = "Z-score")
 
 Heatmap(testing2, cluster_rows = T, cluster_columns = T, column_labels = colnames(testing2), name = "Z-score")
