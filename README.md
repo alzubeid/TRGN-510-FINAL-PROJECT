@@ -48,6 +48,8 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 	
 # Conclusion:
 1. Triple-negative breast cancer in females appeared to show significant differences in gene expression relative to hormone-receptor-positive breast cancers. 
+
+
 2. The principal component separation plot showed that the two cohorts significantly different. 
 3. These differences may overestimate the true genetic alterations between the histological tissue.  This overestimation may be due to racial, age-related, or hormonal status.
 4. Further study including larger sample sizes should be performed, where race, hormonal status, and stage can be compared. 
@@ -58,3 +60,7 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 -The data obtained from TCGA cases were cross examined with portal.gdc.cancer.gov dataset to obtain the clinical pathology, including estrogn/progestrone/HER2 biomarkers.  
 -The RNA-sequence data showed significantly different PCA analyses between triple negative and estorgen-receptor-positive breast cancer; much greater differences than anticipated.  
 
+Requirements:
+This project requires RStudio.
+The data was downloaded from cBioPortal (https://www.cbioportal.org/study/clinicalData?id=brca_tcga_pub2015%2Cbrca_tcga%2Cbrca_tcga_pub%2Cbrca_tcga_pan_can_atlas_2018) and Genomic/transcriptomics from (https://portal.gdc.cancer.gov). 
+There are various installations required (see Final project for the entire list), which were downloaded from http://bioconductor.org/packages
