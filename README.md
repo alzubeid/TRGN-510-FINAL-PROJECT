@@ -49,8 +49,9 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 # Conclusion:
 1. Triple-negative breast cancer in females appeared to show significant differences in gene expression relative to hormone-receptor-positive breast cancers. 
 
-
 2. The principal component separation plot showed that the two cohorts significantly different. 
+![PCA](https://github.com/alzubeid/TRGN-510-FINAL-PROJECT/blob/main/PCA.png)
+
 3. These differences may overestimate the true genetic alterations between the histological tissue.  This overestimation may be due to racial, age-related, or hormonal status.
 4. Further study including larger sample sizes should be performed, where race, hormonal status, and stage can be compared. 
 
