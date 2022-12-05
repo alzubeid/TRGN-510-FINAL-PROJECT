@@ -25,6 +25,7 @@ Use cBioPortal combined studies:
 
 -CSV file with the included triple-negative breast cancer samples is attached as "combined_study_clinical_data-3.csv"
 -CSV file with the included ER+ PR+ HER2-non-amplified breast cancer samples is attached as "combined_study_clinical_data.csv"
+-CSV file with significant genes between both groups included (genes listed with their HUGO names, not Ensembl)
 
 Clinical data obtained from (cBioPortal):
 https://www.cbioportal.org/study/clinicalData?id=brca_tcga_pub2015%2Cbrca_tcga%2Cbrca_tcga_pub%2Cbrca_tcga_pan_can_atlas_2018
@@ -63,7 +64,7 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 -The data obtained from TCGA cases were cross examined with portal.gdc.cancer.gov dataset to obtain the clinical pathology, including estrogn/progestrone/HER2 biomarkers.  
 -The RNA-sequence data showed significantly different PCA analyses between triple negative and estorgen-receptor-positive breast cancer; much greater differences than anticipated.  
 
-Requirements:
+# Requirements:
 This project requires RStudio.
 The data was downloaded from cBioPortal (https://www.cbioportal.org/study/clinicalData?id=brca_tcga_pub2015%2Cbrca_tcga%2Cbrca_tcga_pub%2Cbrca_tcga_pan_can_atlas_2018) and Genomic/transcriptomics from (https://portal.gdc.cancer.gov). 
 There are various installations required (see Final project for the entire list), which were downloaded from http://bioconductor.org/packages
