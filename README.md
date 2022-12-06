@@ -46,7 +46,8 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 	showing 1,304 genes  with stastically significant difference.  
 	-PCA plot show that the TN breast cancers express distinct genes from hormone-receptor-positive tumors.  
 	
-	
+![Final](file:///Users/batulal-zubeidy/Desktop/R%20Notebook.html)
+
 # Conclusion:
 1. Triple-negative breast cancer in females appeared to show significant differences in gene expression relative to hormone-receptor-positive breast cancers. 
 ![heatmap] (https://github.com/alzubeid/TRGN-510-FINAL-PROJECT/blob/main/Image%2012-4-22%20at%209.34%20PM.jpeg)
