@@ -48,7 +48,7 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 
 # Final Project: 
 
-![Final_Project](file:///Users/batulal-zubeidy/Desktop/TRGNFinal/FinalFinal.nb.html)
+![Final_Project](https://github.com/alzubeid/TRGN-510-FINAL-PROJECT/blob/main/FinalFinal.nb.html)
 
 # Conclusion:
 1. Triple-negative breast cancer in females appeared to show significant differences in gene expression relative to hormone-receptor-positive breast cancers. 
