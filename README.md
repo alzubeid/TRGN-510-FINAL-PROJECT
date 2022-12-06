@@ -45,7 +45,9 @@ I will utilize the package DeSEQ2 (http://bioconductor.org/packages/release/bioc
 	-a subset of 10 patients with ER+/PR+/HER2- and 10 patients with triple negative breast cancer: 
 	showing 1,304 genes  with stastically significant difference.  
 	-PCA plot show that the TN breast cancers express distinct genes from hormone-receptor-positive tumors.  
-	
+
+# Final Project: 
+
 ![Final_Project](file:///Users/batulal-zubeidy/Desktop/TRGNFinal/FinalFinal.nb.html)
 
 # Conclusion:
