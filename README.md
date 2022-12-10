@@ -1,8 +1,8 @@
 
-## TRGN Final Project
+# TRGN Final Project
+## Date:  12/6/2022
+## Title: Using DESeq2 to Analayze Gene Expression Differences in Triple-Negative and Hormone-Receptor-Positive Breast Cancer 
 
-title: "TRGN Final 510 Project"
-date: "2022-12-06"
 output:
   html_document:
     toc: yes
@@ -163,7 +163,6 @@ library("DESeq2")
 ```
 
 
-
 ```r
 counts <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/TNB_HR_Joined_Counts.csv", header = TRUE, row.names = 1, sep = ",")
 metadata <- read.csv("/Users/batulal-zubeidy/Desktop/TRGNFinal/metadata.csv", header = TRUE, row.names = 1, sep = ",")
@@ -206,6 +205,14 @@ head(counts)
 ```
 
 ```r
+head(metadata)
+```
+
+```
+![](README_files/figure-html/unnamed-chunk-28-1.png)<!-- -->
+```
+
+```r
 dds <- DESeqDataSetFromMatrix(countData = round(counts), colData = metadata, design = ~condition)
 ```
 
@@ -224,26 +231,21 @@ dds <- DESeqDataSetFromMatrix(countData = round(counts), colData = metadata, des
 #dds <- DESeqDataSetFromTximport(counts,colData = samples,design = ~ condition)
 ```
 
-
 ```r
 #samplesFiles <- grep("TNB_sample1",list.files("TNB_HR_Joined"), value = TRUE)
 ```
-
 
 ```r
 #counts <- counts[which(rowSums(counts) >1),]
 ```
 
-
 ```r
 #condition <- factor(c("TNB", "TNB", "TNB", "TNB", "TNB", "TNB", "TNB", "TNB", "TNB", "TNB", "HR", "HR", "HR", "HR", "HR", "HR", "HR", "HR", "HR", "HR"))
 ```
 
-
 ```r
-#coldata <- data.frame(row.names = colnames(counts), condition)
+coldata <- data.frame(row.names = colnames(counts), condition)
 ```
-
 
 
 ```r
