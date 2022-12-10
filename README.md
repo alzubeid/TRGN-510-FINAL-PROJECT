@@ -1,5 +1,7 @@
 
-title: "R Notebook"
+## TRGN Final Project
+
+title: "TRGN Final 510 Project"
 date: "2022-12-06"
 output:
   html_document:
@@ -1080,8 +1082,8 @@ library(dplyr)
 
 
 
-
-![](README_files/figure-html/unnamed-chunk-63-1.png)<!-- -->
+https://github.com/alzubeid/TRGN-510-FINAL-PROJECT/blob/main/README_files/Heatmap.png
+![](README_files/Heatmap.png)<!-- -->
 
 
 
