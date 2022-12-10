@@ -817,8 +817,7 @@ plotMA(resAsh, xlim=xlim, ylim=ylim, main="ashr")
 ```r
 plotCounts(dds, gene=which.min(res$padj), intgroup="condition")
 ```
-
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-41-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-41-1.png)<!-- -->
 
 
 ```r
@@ -843,8 +842,7 @@ ggplot(d, aes(x=condition, y=count)) +
   geom_point(position=position_jitter(w=0.1,h=0)) + 
   scale_y_log10(breaks=c(25,100,400))
 ```
-
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-42-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-42-1.png)<!-- -->
 
 
 ```r
@@ -938,11 +936,9 @@ head(assay(vsd), 3)
 #extract the matrix of normalized values.
 ```
 
-
 ```r
 #BiocManager::install("vsn")
 ```
-
 
 ```r
 library(vsn)
@@ -956,22 +952,19 @@ ntd <- normTransform(dds)
 library("vsn")
 meanSdPlot(assay(ntd))
 ```
-
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-50-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-50-1.png)<!-- -->
 
 
 ```r
 meanSdPlot(assay(vsd))
 ```
-
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-51-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-51-1.png)<!-- -->
 
 
 ```r
 meanSdPlot(assay(rld))
 ```
-
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-52-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-52-1.png)<!-- -->
 
 Heatmap of the count matrix:
 
@@ -1083,6 +1076,19 @@ library(dplyr)
 #Heatmap(testing2, cluster_rows = T, cluster_columns = T, column_labels = colnames(testing2), name = "Z-score")
 ```
 
+
+
+
+
+
+![](README_files/figure-html/unnamed-chunk-63-1.png)<!-- -->
+
+
+
+
+
+
+
 ```r
 library("pheatmap")
 library("stringr")
@@ -1094,7 +1100,7 @@ rownames(df) <- colnames(assay(vsd))
 pheatmap(assay(vsd)[select,],cellwidth = 4,cellheight = 8,fontsize_row = 9,fontsize_col =4, annotation_col=df)
 ```
 
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-59-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-59-1.png)<!-- -->
 
 These are the highest 20 genes expressed in the TNB and HR-positive breast cancer patients.  The dark oranage to red represents the highest expression, while the dark blue is the lowerest expression.  
 
@@ -1104,7 +1110,7 @@ pheatmap(assay(rld)[select,], cluster_rows=FALSE, show_rownames=FALSE,
          cluster_cols=FALSE, annotation_col=df)
 ```
 
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-60-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-60-1.png)<!-- -->
 
 Heatmap of the sample-to-sample distances
 
@@ -1124,7 +1130,7 @@ pheatmap(sampleDistMatrix,
          col=colors)
 ```
 
-![](UpdatedFinalProject_files/figure-html/unnamed-chunk-62-1.png)<!-- -->
+![](README_files/figure-html/unnamed-chunk-62-1.png)<!-- -->
 
 This heatmap gives an idea of how similar are the samples in terms of gene expression. 
 
@@ -1137,7 +1143,7 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 ```r
 plotPCA(vsd, intgroup=c("condition"))
 ```
-![](README_files/figure-html/pressure-1.png)<!-- -->
+
 ![](README_files/figure-html/unnamed-chunk-63-1.png)<!-- -->
 
 ## Conclusion:
